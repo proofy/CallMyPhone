@@ -1,0 +1,31 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\callto]
+@="URL:callto"
+"URL Protocol"=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\tel]
+@="URL:tel"
+"URL Protocol"=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\dialer.callto]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\dialer.callto\Shell]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\dialer.callto\Shell\Open]
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\dialer.callto\Shell\Open\Command]
+@="c:\\Users\\k.batmanov\\Documents\\build-CallMyPhone-Desktop_Qt_5_11_0_MinGW_32bit-Release\\release\\out\\CallMyPhone.exe %1"
+
+[HKEY_CURRENT_USER\SOFTWARE\Dialer]
+
+[HKEY_CURRENT_USER\SOFTWARE\Dialer\Capabilities]
+"ApplicationDescription"="Dialer"
+"ApplicationName"="Dialer"
+
+[HKEY_CURRENT_USER\SOFTWARE\Dialer\Capabilities\URLAssociations]
+"callto"="dialer.callto"
+"tel"="dialer.callto"
+
+[HKEY_CURRENT_USER\SOFTWARE\RegisteredApplications]
+"Dialer"="Software\\Dialer\\Capabilities"

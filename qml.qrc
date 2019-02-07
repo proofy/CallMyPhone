@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>Lastcalls.qml</file>
+        <file>LastcallsForm.ui.qml</file>
+        <file>Contacts.qml</file>
+        <file>ContactsForm.ui.qml</file>
+        <file>Options.qml</file>
+        <file>OptionsForm.ui.qml</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+  <contextMenus>
+    <contextMenu idMso="ContextMenuContactItem">
+      <dynamicMenu id="MyDynamicMenu"
+                        label="Набрать номер"
+                        getContent="CallbackGetContent"/>
+    </contextMenu>
+  </contextMenus>
+</customUI>

@@ -1,0 +1,12 @@
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\bin\Debug\CallMyPhoneOutlookAddIn.dll
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\bin\Debug\CallMyPhoneOutlookAddIn.pdb
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\bin\Debug\CallMyPhoneOutlookAddIn.dll.manifest
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\bin\Debug\CallMyPhoneOutlookAddIn.vsto
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\obj\Debug\CallMyPhoneOutlookAddIn.Properties.Resources.resources
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\obj\Debug\CallMyPhoneOutlookAddIn.csproj.GenerateResource.cache
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\obj\Debug\CallMyPhoneOutlookAddIn.csproj.CoreCompileInputs.cache
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\obj\Debug\CallMyPhoneOutlookAddIn.csproj.CopyComplete
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\obj\Debug\CallMyPhoneOutlookAddIn.dll
+C:\Users\k.batmanov\source\repos\CallMyPhoneOutlookAddIn\CallMyPhoneOutlookAddIn\obj\Debug\CallMyPhoneOutlookAddIn.pdb
