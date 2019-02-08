@@ -206,7 +206,7 @@ ApplicationWindow {
         TextField {
             id: phonenumber
             placeholderText: qsTr("Введите номер телефона")
-            text: qsTr("") //qsTr("89012010251")
+            text: qsTr("")
             font.pixelSize: 24
             selectByMouse: true
             onAccepted: call.clicked()
