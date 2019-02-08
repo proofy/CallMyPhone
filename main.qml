@@ -2,37 +2,88 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import Qt.labs.settings 1.0
 
-
 ApplicationWindow {
+    id: mainApplication
     visible: true
-//    width: 640
-//    height: 480
-    width: 580
-    height: 100
-//    maximumHeight: 480
-//    maximumWidth: 640
-    maximumHeight: 100
-    maximumWidth: 580
+    width: 640
+    height: 480
+    maximumWidth: 640
+    maximumHeight: 480
     title: qsTr("Набор номера")
 
-    Component.onCompleted: { //Выполняется после старта приложения
+    Settings {
+        id: settings
+        category: 'main'
+        property string phone_url: 'http://127.0.0.1';
+        property string phone_user: 'admin';
+        property string phone_passwd: 'password';
+        property string outgoing_uri: 'admin@127.0.0.1';
 
-//        try {
-//            //Загружаем посление звонки
-//            var datamodel = JSON.parse(settings.lastcalls)
-//            var i;
-//            lastcalls1.listModel.clear();
-//            for (i = 0; i < datamodel.length; ++i) lastcalls1.listModel.append(datamodel[i])
-//        } catch (err) {
-//        }
+        property string lastcalls: "{}"
+        property string contacts: "{}"
+
+        property bool full_mode_switch: false
+
+    }
+
+    function change_window_mode(mode) {
+        if (mode === true){
+            mainApplication.maximumHeight = 480;
+            mainApplication.maximumWidth  = 640;
+            mainApplication.height = 480;
+            mainApplication.width  = 640;
+            settings.full_mode_switch = true
+        } else {
+            mainApplication.maximumHeight = 70;
+            mainApplication.maximumWidth  = 640;
+            mainApplication.height = 70;
+            mainApplication.width  = 640;
+            settings.full_mode_switch = false
+        }
+    }
+
+    function clear_number(number){ //Удаляет лишние символы из номера
+        return number.replace(/[^0-9\+\*\#a-zA-Z\_]/g, '') || ""; //Оставляем только нужные символы
+    }
+
+    Component.onCompleted: { //Выполняется после старта приложения
+       // switch1.checked = settings_window.full_mode_switch;
+        change_window_mode(settings.full_mode_switch);
+
+        var i;
 
 //        try {
 //            //Загружаем контакты
-//            datamodel = JSON.parse(settings.contacts)
+//            var datamodel_contacts = JSON.parse(settings.contacts)
 //            contacts1.listModel.clear();
-//            for (i = 0; i < datamodel.length; ++i) contacts1.listModel.append(datamodel[i])
+//            for (i = 0; i < datamodel_contacts.length; ++i) contacts1.listModel.append(datamodel_contacts[i])
 //        } catch (err) {
 //        }
+
+
+//        function get_name(contacts, number){
+//            for (var i = 0; i < contacts.length; ++i){
+
+//                if ((clear_number(contacts[i].number) === clear_number(number))&& contacts[i].name !== "Не указан"){
+//                    return contacts[i].name;
+//                }
+//            }
+//            return "";
+//        }
+
+        try {
+            //Загружаем посление звонки
+            var datamodel_lastcalls = JSON.parse(settings.lastcalls)
+            lastcalls1.listModel.clear();
+            for (i = 0; i < datamodel_lastcalls.length; ++i){
+
+//                datamodel_lastcalls[i].name = get_name(datamodel_contacts, datamodel_lastcalls[i].number) || datamodel_lastcalls[i].name;
+
+                lastcalls1.listModel.append(datamodel_lastcalls[i])
+            }
+        } catch (err) {
+        }
+
 
 
         phonenumber.text = get_cmd_phonenumber(); //Загружаем вызываемый номер
@@ -65,22 +116,10 @@ ApplicationWindow {
 //    Qt.application.arguments[argIndex] //access items in argv
 //    Qt.application.arguments.length    //gives argc
 
-    Settings {
-        id: settings
-        category: 'main'
-        property string phone_url: 'http://127.0.0.1';
-        property string phone_user: 'admin';
-        property string phone_passwd: 'password';
-        property string outgoing_uri: 'admin@127.0.0.1';
-
-        property string lastcalls: "{}"
-        property string contacts: "{}"
-
-    }
 
     function call_number(number, out_uri){
-//        var only_number = number.replace(/[^0-9\+\*\#]/g, '') || ""; //Оставляем только нужные символы, а если вызывают по sip логину? - Нельзя так удалять!
-          var only_number = number.replace(/[ \(\)\-]/g, '') || ""; //Удаляем лишние символы
+        var only_number = clear_number(number); //Оставляем только нужные символы
+//          var only_number = number.replace(/[ \(\)\-]/g, '') || ""; //Удаляем лишние символы
 
         if (only_number !== "") {
             var request = new XMLHttpRequest();
@@ -123,6 +162,7 @@ ApplicationWindow {
 
         if (phonenumber.text !== get_cmd_phonenumber()){
             phonenumber.phone_name = qsTr("Не указан");
+            param.name = qsTr("Не указан");
         }
 
 //        lastcalls1.listModel.append(param)
@@ -154,6 +194,8 @@ ApplicationWindow {
       return dd + '.' + mm + '.' + yyyy + ' ' + hh + ':' + MM;
     }
 
+
+
     header: Item {
 
         Row {
@@ -179,11 +221,11 @@ ApplicationWindow {
 
             onClicked: {
                 call_number(phonenumber.text, settings.outgoing_uri);
-//                add_lastcall({
-//                                                "number": phonenumber.text,
-//                                                "name"  : phonenumber.phone_name,
-//                                                "date"  : formatDate(new Date())
-//                                            })
+                add_lastcall({
+                                                "number": phonenumber.text,
+                                                "name"  : phonenumber.phone_name,
+                                                "date"  : formatDate(new Date())
+                                            })
             }
 
         }
@@ -195,44 +237,61 @@ ApplicationWindow {
 
             onClicked: send_key('Cancel')
         }
-    }
+        Switch {
+            id: switch1
+          //  anchors.top: call_stop.bottom
+//            x: 117
+//            y: 282
+            text: qsTr("Дополнительно")
+            checked: settings.full_mode_switch
+            onClicked: {
+                change_window_mode(this.checked);
+            }
+
+        }
+
+        }
+
 }
-//    SwipeView{
-//        id: swipeView
-//        anchors.fill: parent
-//        currentIndex: tabBar.currentIndex
+    SwipeView{
+        id: swipeView
+        anchors.fill: parent
+        visible: settings.full_mode_switch
+        currentIndex: tabBar.currentIndex
 
-//        Lastcalls{
-//            id: lastcalls1
+        Lastcalls{
+            id: lastcalls1
 
 
-//        }
+        }
 
 //        Contacts{
 //            id: contacts1
 //        }
 
-//        Options{
-//            id: options1
-//        }
+        Options{
+            id: options1
+        }
 
 
-//    }
+    }
 
-//    footer: TabBar{
-//        id: tabBar
-//        currentIndex: swipeView.currentIndex
-//        font.pixelSize: 20
+    footer: TabBar{
+        id: tabBar
+        currentIndex: swipeView.currentIndex
+        visible: settings.full_mode_switch
 
-//        TabButton{
-//            text: qsTr("Вызовы")
-//        }
+        font.pixelSize: 20
+
+        TabButton{
+            text: qsTr("Вызовы")
+        }
 //        TabButton{
 //            text: qsTr("Контакты")
 //        }
-//        TabButton{
-//            text: qsTr("Настройки")
-//        }
-//    }
+        TabButton{
+            text: qsTr("Настройки")
+        }
+    }
 
 }

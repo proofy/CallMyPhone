@@ -55,6 +55,7 @@ Item {
 
                 delegate: ItemDelegate {
                     width: parent.width
+                    height: 50
                     highlighted: ListView.isCurrentItem
                     onClicked: lastcalls_listView.currentIndex = index
 
@@ -64,6 +65,8 @@ Item {
                     //                    }
                     Column {
                         width: parent.width
+                        spacing: 2
+
                         Text {
                             font.pixelSize: 20
                             text: name

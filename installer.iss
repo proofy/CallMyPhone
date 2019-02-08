@@ -2,9 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "CallMyPhone"
-#define MyAppVersion "0.5"
-#define MyAppPublisher "My Company, Inc."
-#define MyAppURL "http://www.example.com/"
+#define MyAppVersion "0.6"
+#define MyAppPublisher "Batmanov Konstantin"
+#define MyAppURL "https://github.com/Konstantin2/CallMyPhone"
 #define MyAppExeName "CallMyPhone.exe"
 
 [Setup]
@@ -24,7 +24,7 @@ DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=C:\Users\k.batmanov\Documents\build-CallMyPhone-Desktop_Qt_5_11_0_MinGW_32bit-Release\installer
-OutputBaseFilename=setup_callmyphone
+OutputBaseFilename=setup_callmyphone_v{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=lowest

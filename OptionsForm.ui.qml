@@ -2,7 +2,8 @@ import QtQuick 2.4
 import QtQuick.Controls 2.2
 
 Item {
-    width: 400
+    id: item1
+    width: 630
     height: 400
     property alias button: button
     property alias phone_url: phone_url
@@ -12,61 +13,81 @@ Item {
 
     Grid {
         id: grid
-        anchors.topMargin: 50
+        anchors.leftMargin: 4
+        anchors.topMargin: 60
         columns: 2
+        spacing: 6
         anchors.fill: parent
+
         Label {
             id: label
             text: qsTr("Адрес телефона")
-            font.pointSize: 18
+            font.pointSize: 16
         }
         TextField {
             id: phone_url
+            width: 400
             text: settings.phone_url
-            font.pixelSize: 18
+            //            anchors.right: parent.right
+            //            anchors.rightMargin: 200
+            //            anchors.right: parent.right
+            //            anchors.rightMargin: 20
+            font.pixelSize: 16
         }
 
         Label {
             id: label1
             text: qsTr("Пользователь")
-            font.pointSize: 18
+            font.pointSize: 16
         }
         TextField {
             id: phone_user
+            width: 400
             text: settings.phone_user
-            font.pixelSize: 18
+            //            anchors.right: parent.right
+            //            anchors.rightMargin: 20
+            font.pixelSize: 16
         }
 
         Label {
             id: label2
             text: qsTr("Пароль")
-            font.pointSize: 18
+            font.pointSize: 16
         }
         TextInput {
             id: phone_passwd
+            width: 400
             text: settings.phone_passwd
+            //            anchors.right: parent.right
+            //            anchors.rightMargin: 11
             echoMode: TextInput.Password
-            font.pixelSize: 18
+            font.pixelSize: 16
         }
 
         Label {
             id: label3
             text: qsTr("Ваш номер")
-            font.pointSize: 18
+            font.pointSize: 16
         }
 
         TextField {
             id: outgoing_uri
+            width: 400
             text: settings.outgoing_uri
-            font.pixelSize: 18
+            //            anchors.right: parent.right
+            //            anchors.rightMargin: 20
+            font.pixelSize: 16
         }
     }
 
     Button {
         id: button
-        x: 30
-        y: 214
+        y: 246
         text: qsTr("Сохранить")
-        font.pointSize: 18
+        anchors.left: parent.left
+        anchors.leftMargin: 130
+        anchors.right: parent.right
+        anchors.rightMargin: 152
+        font.pointSize: 16
     }
 }

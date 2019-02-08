@@ -7,6 +7,7 @@ Item {
     property alias listModel: listModel
 
     ScrollView {
+        anchors.leftMargin: 5
         anchors.fill: parent
 
         ListView {
@@ -18,6 +19,8 @@ Item {
 
             delegate: ItemDelegate {
                 width: parent.width
+                height: 50
+
                 Column {
                     width: parent.width
                     Text {
